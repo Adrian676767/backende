@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+
 students = [
     {"id": 1, "name": "Samuel Oravec", "age": 18, "vyska": 175},
     {"id": 2, "name": "Richard Benko", "age": 22, "vyska": 182},
@@ -14,7 +15,6 @@ students = [
     {"id": 9, "name": "Erik Černý", "age": 26, "vyska": 180},
     {"id": 10, "name": "Veronika Poláková", "age": 16, "vyska": 172}
 ]
-
 
 def bubble_sort(data, field):
     n = len(data)
