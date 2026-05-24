@@ -36,6 +36,11 @@ def bubble_sort(data, field):
     return data
 
 
+@app.route("/")
+def home():
+    return "Flask server funguje!"
+
+
 @app.route("/students", methods=["GET"])
 def get_students():
 
@@ -43,7 +48,6 @@ def get_students():
 
     if sort_by is None:
         sort_by = "age"
-
 
     if sort_by not in ["age", "name", "vyska"]:
         return jsonify({"error": "Invalid sort field"}), 400
