@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 import os
 
@@ -38,8 +38,6 @@ def bubble_sort(data, field):
     return data
 
 
-from flask import render_template
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -48,21 +46,14 @@ def home():
 @app.route("/students", methods=["GET"])
 def get_students():
 
-    sort_by = request.args.get("sort")
-
-    if sort_by is None:
-        sort_by = "age"
+    sort_by = request.args.get("sort") or "age"
 
     if sort_by not in ["age", "name", "vyska"]:
         return jsonify({"error": "Invalid sort field"}), 400
 
     sorted_list = bubble_sort(students.copy(), sort_by)
-
     return jsonify(sorted_list)
 
-
-if __name__ == "__main__":
-import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
