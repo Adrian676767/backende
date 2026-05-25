@@ -2,8 +2,7 @@ async function loadStudents() {
 
     const sort = document.getElementById("sortSelect").value;
 
-    const response = await fetch(`http://127.0.0.1:5000/students?sort=${sort}`);
-
+const response = await fetch(`/students?sort=${sort}`);
     const students = await response.json();
 
     const table = document.getElementById("studentsTable");
