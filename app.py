@@ -37,9 +37,11 @@ def bubble_sort(data, field):
     return data
 
 
+from flask import render_template
+
 @app.route("/")
 def home():
-    return "Flask server funguje!"
+    return render_template("index.html")
 
 
 @app.route("/students", methods=["GET"])
